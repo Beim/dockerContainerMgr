@@ -33,7 +33,7 @@ $ python bin/server.py
 
 配置说明
 
-```json
+```
 {
     "grpc": {
         "port": 50020, // server 端口
