@@ -1,0 +1,16 @@
+{
+    "grpc": {
+        "port": 50020,
+        "max_workers": 10
+    },
+    "labels": ["shNeo4j"],
+    "image": "neo4j:latest",
+    "environment": {
+        "NEO4J_AUTH": "neo4j/123123"
+    },
+    "ports": {
+        "7474/tcp": null,
+        "7687/tcp": null
+    },
+    "max_memory_usage": 70
+}
