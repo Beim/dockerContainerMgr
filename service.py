@@ -122,3 +122,5 @@ if __name__ == '__main__':
     service = DockerService(docker_client)
     service.stop_all_containers()
     service.remove_all_containers()
+    # print(service.run_container())
+    # print(service.get_container_status("ca4ce4c4cfe4"))

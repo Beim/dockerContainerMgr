@@ -3,6 +3,11 @@ syntax = "proto3";
 import "google/protobuf/wrappers.proto";
 import "google/protobuf/empty.proto";
 
+package com.ices.sh.gspace.rpc;
+
+option java_package = "com.ices.sh.gspace.rpc";
+option java_outer_classname = "DockerContainerMgr";
+
 service DockerContainerMgrService {
 
     // 获取容器id 列表
@@ -13,6 +18,9 @@ service DockerContainerMgrService {
 
     // 停止容器
     rpc stopContainer(google.protobuf.StringValue) returns (google.protobuf.Empty);
+
+    // 删除容器
+    rpc removeContainer(google.protobuf.StringValue) returns (google.protobuf.Empty);
 
     // 启动容器
     rpc startContainer(google.protobuf.StringValue) returns (google.protobuf.Empty);

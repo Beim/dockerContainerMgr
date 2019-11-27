@@ -17,27 +17,32 @@ class DockerContainerMgrServiceStub(object):
       channel: A grpc.Channel.
     """
     self.getContainerIds = channel.unary_unary(
-        '/DockerContainerMgrService/getContainerIds',
+        '/com.ices.sh.gspace.rpc.DockerContainerMgrService/getContainerIds',
         request_serializer=google_dot_protobuf_dot_wrappers__pb2.BoolValue.SerializeToString,
         response_deserializer=dockerContainerMgr__pb2.StringList.FromString,
         )
     self.runContainer = channel.unary_unary(
-        '/DockerContainerMgrService/runContainer',
+        '/com.ices.sh.gspace.rpc.DockerContainerMgrService/runContainer',
         request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
         response_deserializer=dockerContainerMgr__pb2.ContainerStatus.FromString,
         )
     self.stopContainer = channel.unary_unary(
-        '/DockerContainerMgrService/stopContainer',
+        '/com.ices.sh.gspace.rpc.DockerContainerMgrService/stopContainer',
+        request_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
+        response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+        )
+    self.removeContainer = channel.unary_unary(
+        '/com.ices.sh.gspace.rpc.DockerContainerMgrService/removeContainer',
         request_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
         response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
         )
     self.startContainer = channel.unary_unary(
-        '/DockerContainerMgrService/startContainer',
+        '/com.ices.sh.gspace.rpc.DockerContainerMgrService/startContainer',
         request_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
         response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
         )
     self.getContainerStatus = channel.unary_unary(
-        '/DockerContainerMgrService/getContainerStatus',
+        '/com.ices.sh.gspace.rpc.DockerContainerMgrService/getContainerStatus',
         request_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
         response_deserializer=dockerContainerMgr__pb2.ContainerStatus.FromString,
         )
@@ -63,6 +68,13 @@ class DockerContainerMgrServiceServicer(object):
 
   def stopContainer(self, request, context):
     """停止容器
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def removeContainer(self, request, context):
+    """删除容器
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -100,6 +112,11 @@ def add_DockerContainerMgrServiceServicer_to_server(servicer, server):
           request_deserializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
           response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
       ),
+      'removeContainer': grpc.unary_unary_rpc_method_handler(
+          servicer.removeContainer,
+          request_deserializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
+          response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+      ),
       'startContainer': grpc.unary_unary_rpc_method_handler(
           servicer.startContainer,
           request_deserializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
@@ -112,5 +129,5 @@ def add_DockerContainerMgrServiceServicer_to_server(servicer, server):
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
-      'DockerContainerMgrService', rpc_method_handlers)
+      'com.ices.sh.gspace.rpc.DockerContainerMgrService', rpc_method_handlers)
   server.add_generic_rpc_handlers((generic_handler,))

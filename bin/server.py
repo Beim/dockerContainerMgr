@@ -42,6 +42,10 @@ class DockerContainerMgrServicer(dcm_grpc.DockerContainerMgrServiceServicer):
         self.service.start_container_by_id(id)
         return Empty()
 
+    def removeContainer(self, request: wrappers.StringValue, context):
+        id = request.value
+        self.service.stop_container_by_id(id)
+        return Empty()
 
     def getContainerStatus(self, request: wrappers.StringValue, context):
         id = request.value

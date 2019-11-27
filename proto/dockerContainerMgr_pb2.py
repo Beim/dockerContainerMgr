@@ -19,10 +19,10 @@ from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='dockerContainerMgr.proto',
-  package='',
+  package='com.ices.sh.gspace.rpc',
   syntax='proto3',
-  serialized_options=None,
-  serialized_pb=_b('\n\x18\x64ockerContainerMgr.proto\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1bgoogle/protobuf/empty.proto\"\x19\n\nStringList\x12\x0b\n\x03val\x18\x01 \x03(\t\"\x87\x01\n\x0f\x43ontainerStatus\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\t\x12*\n\x05ports\x18\x03 \x03(\x0b\x32\x1b.ContainerStatus.PortsEntry\x1a,\n\nPortsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x32\xe6\x02\n\x19\x44ockerContainerMgrService\x12:\n\x0fgetContainerIds\x12\x1a.google.protobuf.BoolValue\x1a\x0b.StringList\x12\x38\n\x0crunContainer\x12\x16.google.protobuf.Empty\x1a\x10.ContainerStatus\x12\x45\n\rstopContainer\x12\x1c.google.protobuf.StringValue\x1a\x16.google.protobuf.Empty\x12\x46\n\x0estartContainer\x12\x1c.google.protobuf.StringValue\x1a\x16.google.protobuf.Empty\x12\x44\n\x12getContainerStatus\x12\x1c.google.protobuf.StringValue\x1a\x10.ContainerStatusb\x06proto3')
+  serialized_options=_b('\n\026com.ices.sh.gspace.rpcB\022DockerContainerMgr'),
+  serialized_pb=_b('\n\x18\x64ockerContainerMgr.proto\x12\x16\x63om.ices.sh.gspace.rpc\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1bgoogle/protobuf/empty.proto\"\x19\n\nStringList\x12\x0b\n\x03val\x18\x01 \x03(\t\"\x9e\x01\n\x0f\x43ontainerStatus\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\t\x12\x41\n\x05ports\x18\x03 \x03(\x0b\x32\x32.com.ices.sh.gspace.rpc.ContainerStatus.PortsEntry\x1a,\n\nPortsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x32\xf4\x03\n\x19\x44ockerContainerMgrService\x12Q\n\x0fgetContainerIds\x12\x1a.google.protobuf.BoolValue\x1a\".com.ices.sh.gspace.rpc.StringList\x12O\n\x0crunContainer\x12\x16.google.protobuf.Empty\x1a\'.com.ices.sh.gspace.rpc.ContainerStatus\x12\x45\n\rstopContainer\x12\x1c.google.protobuf.StringValue\x1a\x16.google.protobuf.Empty\x12G\n\x0fremoveContainer\x12\x1c.google.protobuf.StringValue\x1a\x16.google.protobuf.Empty\x12\x46\n\x0estartContainer\x12\x1c.google.protobuf.StringValue\x1a\x16.google.protobuf.Empty\x12[\n\x12getContainerStatus\x12\x1c.google.protobuf.StringValue\x1a\'.com.ices.sh.gspace.rpc.ContainerStatusB,\n\x16\x63om.ices.sh.gspace.rpcB\x12\x44ockerContainerMgrb\x06proto3')
   ,
   dependencies=[google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,])
 
@@ -31,13 +31,13 @@ DESCRIPTOR = _descriptor.FileDescriptor(
 
 _STRINGLIST = _descriptor.Descriptor(
   name='StringList',
-  full_name='StringList',
+  full_name='com.ices.sh.gspace.rpc.StringList',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='val', full_name='StringList.val', index=0,
+      name='val', full_name='com.ices.sh.gspace.rpc.StringList.val', index=0,
       number=1, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -55,27 +55,27 @@ _STRINGLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=89,
-  serialized_end=114,
+  serialized_start=113,
+  serialized_end=138,
 )
 
 
 _CONTAINERSTATUS_PORTSENTRY = _descriptor.Descriptor(
   name='PortsEntry',
-  full_name='ContainerStatus.PortsEntry',
+  full_name='com.ices.sh.gspace.rpc.ContainerStatus.PortsEntry',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='key', full_name='ContainerStatus.PortsEntry.key', index=0,
+      name='key', full_name='com.ices.sh.gspace.rpc.ContainerStatus.PortsEntry.key', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='value', full_name='ContainerStatus.PortsEntry.value', index=1,
+      name='value', full_name='com.ices.sh.gspace.rpc.ContainerStatus.PortsEntry.value', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -93,33 +93,33 @@ _CONTAINERSTATUS_PORTSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=208,
-  serialized_end=252,
+  serialized_start=255,
+  serialized_end=299,
 )
 
 _CONTAINERSTATUS = _descriptor.Descriptor(
   name='ContainerStatus',
-  full_name='ContainerStatus',
+  full_name='com.ices.sh.gspace.rpc.ContainerStatus',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='ContainerStatus.id', index=0,
+      name='id', full_name='com.ices.sh.gspace.rpc.ContainerStatus.id', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='status', full_name='ContainerStatus.status', index=1,
+      name='status', full_name='com.ices.sh.gspace.rpc.ContainerStatus.status', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='ports', full_name='ContainerStatus.ports', index=2,
+      name='ports', full_name='com.ices.sh.gspace.rpc.ContainerStatus.ports', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -137,8 +137,8 @@ _CONTAINERSTATUS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=117,
-  serialized_end=252,
+  serialized_start=141,
+  serialized_end=299,
 )
 
 _CONTAINERSTATUS_PORTSENTRY.containing_type = _CONTAINERSTATUS
@@ -150,7 +150,7 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 StringList = _reflection.GeneratedProtocolMessageType('StringList', (_message.Message,), {
   'DESCRIPTOR' : _STRINGLIST,
   '__module__' : 'dockerContainerMgr_pb2'
-  # @@protoc_insertion_point(class_scope:StringList)
+  # @@protoc_insertion_point(class_scope:com.ices.sh.gspace.rpc.StringList)
   })
 _sym_db.RegisterMessage(StringList)
 
@@ -159,31 +159,32 @@ ContainerStatus = _reflection.GeneratedProtocolMessageType('ContainerStatus', (_
   'PortsEntry' : _reflection.GeneratedProtocolMessageType('PortsEntry', (_message.Message,), {
     'DESCRIPTOR' : _CONTAINERSTATUS_PORTSENTRY,
     '__module__' : 'dockerContainerMgr_pb2'
-    # @@protoc_insertion_point(class_scope:ContainerStatus.PortsEntry)
+    # @@protoc_insertion_point(class_scope:com.ices.sh.gspace.rpc.ContainerStatus.PortsEntry)
     })
   ,
   'DESCRIPTOR' : _CONTAINERSTATUS,
   '__module__' : 'dockerContainerMgr_pb2'
-  # @@protoc_insertion_point(class_scope:ContainerStatus)
+  # @@protoc_insertion_point(class_scope:com.ices.sh.gspace.rpc.ContainerStatus)
   })
 _sym_db.RegisterMessage(ContainerStatus)
 _sym_db.RegisterMessage(ContainerStatus.PortsEntry)
 
 
+DESCRIPTOR._options = None
 _CONTAINERSTATUS_PORTSENTRY._options = None
 
 _DOCKERCONTAINERMGRSERVICE = _descriptor.ServiceDescriptor(
   name='DockerContainerMgrService',
-  full_name='DockerContainerMgrService',
+  full_name='com.ices.sh.gspace.rpc.DockerContainerMgrService',
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=255,
-  serialized_end=613,
+  serialized_start=302,
+  serialized_end=802,
   methods=[
   _descriptor.MethodDescriptor(
     name='getContainerIds',
-    full_name='DockerContainerMgrService.getContainerIds',
+    full_name='com.ices.sh.gspace.rpc.DockerContainerMgrService.getContainerIds',
     index=0,
     containing_service=None,
     input_type=google_dot_protobuf_dot_wrappers__pb2._BOOLVALUE,
@@ -192,7 +193,7 @@ _DOCKERCONTAINERMGRSERVICE = _descriptor.ServiceDescriptor(
   ),
   _descriptor.MethodDescriptor(
     name='runContainer',
-    full_name='DockerContainerMgrService.runContainer',
+    full_name='com.ices.sh.gspace.rpc.DockerContainerMgrService.runContainer',
     index=1,
     containing_service=None,
     input_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
@@ -201,7 +202,7 @@ _DOCKERCONTAINERMGRSERVICE = _descriptor.ServiceDescriptor(
   ),
   _descriptor.MethodDescriptor(
     name='stopContainer',
-    full_name='DockerContainerMgrService.stopContainer',
+    full_name='com.ices.sh.gspace.rpc.DockerContainerMgrService.stopContainer',
     index=2,
     containing_service=None,
     input_type=google_dot_protobuf_dot_wrappers__pb2._STRINGVALUE,
@@ -209,8 +210,8 @@ _DOCKERCONTAINERMGRSERVICE = _descriptor.ServiceDescriptor(
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
-    name='startContainer',
-    full_name='DockerContainerMgrService.startContainer',
+    name='removeContainer',
+    full_name='com.ices.sh.gspace.rpc.DockerContainerMgrService.removeContainer',
     index=3,
     containing_service=None,
     input_type=google_dot_protobuf_dot_wrappers__pb2._STRINGVALUE,
@@ -218,9 +219,18 @@ _DOCKERCONTAINERMGRSERVICE = _descriptor.ServiceDescriptor(
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
-    name='getContainerStatus',
-    full_name='DockerContainerMgrService.getContainerStatus',
+    name='startContainer',
+    full_name='com.ices.sh.gspace.rpc.DockerContainerMgrService.startContainer',
     index=4,
+    containing_service=None,
+    input_type=google_dot_protobuf_dot_wrappers__pb2._STRINGVALUE,
+    output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='getContainerStatus',
+    full_name='com.ices.sh.gspace.rpc.DockerContainerMgrService.getContainerStatus',
+    index=5,
     containing_service=None,
     input_type=google_dot_protobuf_dot_wrappers__pb2._STRINGVALUE,
     output_type=_CONTAINERSTATUS,

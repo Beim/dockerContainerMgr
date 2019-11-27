@@ -25,17 +25,17 @@ def test2(stub: DockerContainerMgrServiceStub):
 
 
 def test3(stub: DockerContainerMgrServiceStub):
-    res = stub.getContainerStatus(wrappers.StringValue(value="97f6238d4ea1"))
+    res = stub.getContainerStatus(wrappers.StringValue(value="468a8ecc6bfc"))
     print(res)
-
 
 def run():
     channel = grpc.insecure_channel('119.29.160.85:%s' % CONFIG['grpc']['port'])
     stub = dcm_grpc.DockerContainerMgrServiceStub(channel)
+    stub.runContainer(Empty())
     # test0(stub)
     # test1(stub)
     # test2(stub)
-    test3(stub)
+    # test3(stub)
 
 if __name__ == '__main__':
     run()
