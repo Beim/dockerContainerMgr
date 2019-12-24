@@ -17,13 +17,16 @@
 ```bash
 # 安装依赖
 $ pip install -r requirements.txt
+# 或
+$ pip install protobuf grpcio grpcio-tools docker psutil
+
 # 运行
 $ python bin/server.py
 ```
 
 
 
-客户端参考`/bin/client.py`
+开发客户端参考`/bin/client.py`
 
 
 
