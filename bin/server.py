@@ -24,7 +24,7 @@ class DockerContainerMgrServicer(dcm_grpc.DockerContainerMgrServiceServicer):
         return result
 
     def runContainer(self, request: Empty, context):
-        status = self.service.run_container()
+        status = self.service.run_container_with_port_constraint()
         return dcm.ContainerStatus(
             id = status['id'],
             status = status['status'],

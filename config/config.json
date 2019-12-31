@@ -8,9 +8,6 @@
     "environment": {
         "NEO4J_AUTH": "neo4j/123123"
     },
-    "ports": {
-        "7474/tcp": null,
-        "7687/tcp": null
-    },
-    "max_memory_usage": 70
+    "max_memory_usage": 90,
+    "ports": ["33007-33010", "33011-33030"]
 }

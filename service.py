@@ -37,18 +37,49 @@ class DockerService:
         }
         return self.client.containers.list(all=show_all, filters=filters)
 
-    def run_container(self) -> Dict:
+    def run_container(self, http_port: str = None, bolt_port: str = None) -> Dict:
         """
-        run容器
-        :return: 容器id 与端口号，若超过容器数量限制，返回None
+        run 容器
+        :param http_port: 映射到主机的http 端口
+        :param bolt_port: 映射到主机的bolt 端口
+        :return: 容器id 与端口号，若超过容器数量限制报错
         """
         if psutil.virtual_memory().percent >= CONFIG['max_memory_usage']:
-            return None
+            raise RuntimeError("exceed max_memory_usage: %s" % psutil.virtual_memory().percent)
         container = self.client.containers.run(CONFIG["image"], detach=True,
                                          environment=CONFIG["environment"],
-                                         ports=CONFIG["ports"],
+                                         ports={ '7474/tcp': bolt_port, '7687/tcp': http_port },
                                          labels=CONFIG['labels'])
         return DockerService._parse_container_attrs(container)
+
+    def run_container_with_port_constraint(self) -> Dict:
+        """
+        启动容器，暴露的端口在配置的端口区间内
+        :return:
+        """
+        ports_range_set = set()
+        for r in CONFIG['ports']:
+            [start, end] = r.split("-")
+            start = int(start)
+            end = int(end)
+            for p in range(start, end + 1):
+                ports_range_set.add(str(p))
+
+        used_ports = set()
+        filters = {
+            "ancestor": CONFIG["image"],
+            # "label": CONFIG["labels"]
+        }
+        containers = self.client.containers.list(all=False, filters=filters)
+        for c in containers:
+            used_ports.add(c.ports['7474/tcp'][0]['HostPort'])
+            used_ports.add(c.ports['7687/tcp'][0]['HostPort'])
+
+        available_ports = list(ports_range_set - used_ports)
+        available_ports.sort()
+        if len(available_ports) < 2:
+            raise RuntimeError("no ports available")
+        return self.run_container(http_port=available_ports[0], bolt_port=available_ports[1])
 
     def stop_container_by_id(self, container_id: str) -> None:
         """
@@ -120,7 +151,8 @@ class DockerService:
 if __name__ == '__main__':
     docker_client = docker.from_env()
     service = DockerService(docker_client)
-    service.stop_all_containers()
-    service.remove_all_containers()
+    print(service.run_container_with_port_constraint())
+    # service.stop_all_containers()
+    # service.remove_all_containers()
     # print(service.run_container())
     # print(service.get_container_status("ca4ce4c4cfe4"))
