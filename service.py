@@ -1,4 +1,5 @@
 import docker
+import time
 from typing import List, Dict
 from docker.models.containers import Container
 import psutil
@@ -70,8 +71,10 @@ class DockerService:
             "ancestor": CONFIG["image"],
             # "label": CONFIG["labels"]
         }
-        containers = self.client.containers.list(all=False, filters=filters)
+        containers = self.client.containers.list(all=True, filters=filters)
         for c in containers:
+            if '7474/tcp' not in c.ports or '7687/tcp' not in c.ports:
+                continue
             used_ports.add(c.ports['7474/tcp'][0]['HostPort'])
             used_ports.add(c.ports['7687/tcp'][0]['HostPort'])
 
@@ -89,6 +92,20 @@ class DockerService:
         """
         container = self.client.containers.get(container_id)
         container.stop()
+
+    def remove_container_by_id(self, container_id: str) -> None:
+        """
+        remove 停止状态的容器
+        :param container_id:
+        :return: None
+        """
+        container = self.client.containers.get(container_id)
+        if container.status == 'running':
+            container.stop()
+        while container.status != 'exited':
+            time.sleep(1)
+            container = self.client.containers.get(container_id)
+        container.remove()
 
     def start_container_by_id(self, container_id: str) -> None:
         """
