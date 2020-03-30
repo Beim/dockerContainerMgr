@@ -99,7 +99,10 @@ class DockerService:
         :param container_id:
         :return: None
         """
-        container = self.client.containers.get(container_id)
+        try:
+            container = self.client.containers.get(container_id)
+        except docker.errors.NotFound:
+            return
         if container.status == 'running':
             container.stop()
         while container.status != 'exited':
